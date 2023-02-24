@@ -32,9 +32,10 @@ RSpec.describe Book do
     end
 
     it 'adds books to author books instance variable' do
+      jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
       villette = @charlotte_bronte.write("Villette", "1853")
 
-      expect(charlotte_bronte.books).to eq([jane_eyre, villette])
+      expect(@charlotte_bronte.books).to eq([jane_eyre, villette])
     end
   end
 end
