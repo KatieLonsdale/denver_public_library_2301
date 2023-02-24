@@ -29,6 +29,10 @@ RSpec.describe Book do
       expect(jane_eyre.author).to eq('Charlotte Bronte')
       expect(jane_eyre.title).to eq('Jane Eyre')
       expect(jane_eyre.publication_year).to eq('1847')
+
+      villette = @charlotte_bronte.write("Villette", "1853")
+
+      expect(charlotte_bronte.books).to eq([jane_eyre, villette])
     end
   end
 end
