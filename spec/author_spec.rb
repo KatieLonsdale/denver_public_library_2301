@@ -1,6 +1,6 @@
 require './spec_helper'
 
-RSpec.describe Book do
+RSpec.describe Author do
   before(:each) do
     @charlotte_bronte = Author.new({
       first_name: "Charlotte", 
