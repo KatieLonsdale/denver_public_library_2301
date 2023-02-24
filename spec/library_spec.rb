@@ -12,5 +12,13 @@ RSpec.describe Library do
     it 'has a name' do
       expect(@library.name).to eq('Bemis Public Library')
     end
+
+    it 'has an empty array of books by default' do
+      expect(@library.books).to eq([])
+    end
+
+    it 'has an empty array of authors by default' do
+      expect(@library.authors).to eq([])
+    end
   end
 end
