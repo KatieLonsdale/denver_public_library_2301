@@ -46,7 +46,7 @@ RSpec.describe Library do
   end
 
   describe '#publication_time_frame_for' do
-    xit 'returns hash with start and end year of given authors books' do
+    it 'returns hash with start and end year of given authors books' do
       jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
       villette = @charlotte_bronte.write("Villette", "1853")
       @library.add_author(@charlotte_bronte)
@@ -54,6 +54,18 @@ RSpec.describe Library do
       expect(@library.publication_time_frame_for(@charlotte_bronte)).to be_a Hash
       expect(@library.publication_time_frame_for(@charlotte_bronte)).
       to eq({:start => '1847', :end => '1853'})
+    end
+  end
+
+  describe '#check_out_book' do
+    it 'adds book to list of books currently checked out' do
+      jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+      villette = @charlotte_bronte.write("Villette", "1853")
+      @library.add_author(@charlotte_bronte)
+
+      @library.check_out_book(jane_eyre)
+
+      expect(@library.checked_out_books).to eq([jane_eyre])
     end
   end
 end
