@@ -20,8 +20,12 @@ class Library
   end
 
   def check_out_book(book)
-    book.check_outs += 1
-    @checked_out_books << book
+    if @checked_out_books.include?(book)
+      return 'Already checked out.'
+    else
+      book.check_outs += 1
+      @checked_out_books << book
+    end
   end
 
   def return_book(book)
