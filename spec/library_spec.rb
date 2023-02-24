@@ -71,7 +71,17 @@ RSpec.describe Library do
 
       expect(@library.checked_out_books).to eq([jane_eyre])
       # mutiple books
-      # can't be checked out if already checked out
+    end
+
+    it 'cant be checked out if already checked out' do
+      jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+      villette = @charlotte_bronte.write("Villette", "1853")
+      @library.add_author(@charlotte_bronte)
+
+      @library.check_out_book(jane_eyre)
+      @library.check_out_book(villette)
+
+      expect(@library.check_out_book(jane_eyre)).to eq('Already checked out.')
     end
   end
 
