@@ -23,6 +23,8 @@ RSpec.describe Library do
     it 'has an empty array of authors by default' do
       expect(@library.authors).to eq([])
     end
+
+    # checked out books
   end
 
   describe '#add_author' do
@@ -58,7 +60,7 @@ RSpec.describe Library do
   end
 
   describe '#check_out_book' do
-    it 'adds book to list of books currently checked out' do
+    it 'adds given book to checked out books' do
       jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
       villette = @charlotte_bronte.write("Villette", "1853")
       @library.add_author(@charlotte_bronte)
@@ -66,6 +68,20 @@ RSpec.describe Library do
       @library.check_out_book(jane_eyre)
 
       expect(@library.checked_out_books).to eq([jane_eyre])
+      # mutiple books
+    end
+  end
+
+  describe '#return_book' do
+    it 'removes given book from checked out books' do
+      jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+      villette = @charlotte_bronte.write("Villette", "1853")
+      @library.add_author(@charlotte_bronte)
+
+      @library.check_out_book(jane_eyre)
+      @library.return_book(jane_eyre)
+
+      expect(@library.checked_out_books).to eq([])
     end
   end
 end
