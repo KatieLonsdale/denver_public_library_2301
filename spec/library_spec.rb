@@ -69,6 +69,7 @@ RSpec.describe Library do
 
       expect(@library.checked_out_books).to eq([jane_eyre])
       # mutiple books
+      # can't be checked out if already checked out
     end
   end
 
@@ -82,6 +83,21 @@ RSpec.describe Library do
       @library.return_book(jane_eyre)
 
       expect(@library.checked_out_books).to eq([])
+    end
+  end
+
+  describe '#most_checked_out_book' do
+    it 'returns book that has been checked out most times' do
+        jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+        villette = @charlotte_bronte.write("Villette", "1853")
+        @library.add_author(@charlotte_bronte)
+  
+        @library.check_out_book(jane_eyre)
+        @library.check_out_book(villette)
+        @library.return_book(jane_eyre)
+        @library.check_out_book(jane_eyre)
+
+        expect(@library.most_checked_out_book).to eq('Jane Eyre')
     end
   end
 end
