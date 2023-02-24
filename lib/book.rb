@@ -8,6 +8,6 @@ class Book
   end
 
   def extract_year(date)
-    @publication_date = date.split[2]
+    @publication_date = date.split.last
   end
 end
