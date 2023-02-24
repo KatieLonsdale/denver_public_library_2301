@@ -15,5 +15,6 @@ class Author
     publication_date: publication_date})
     @books << book
     book
+    # helper method to format book
   end
 end
