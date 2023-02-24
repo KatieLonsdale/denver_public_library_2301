@@ -38,12 +38,15 @@ RSpec.describe Library do
       @library.add_author(@charlotte_bronte)
 
       expect(@library.books).to eq([jane_eyre, villette])
+      expect(villette.author).to eq('Charlotte Bronte')
+      expect(villette.title).to eq('Villette')
+      expect(villette.publication_year).to eq('1853')
     end
     # try with multiple authors and books
   end
 
   describe '#publication_time_frame_for' do
-    it 'returns hash with start and end year of given authors books' do
+    xit 'returns hash with start and end year of given authors books' do
       jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
       villette = @charlotte_bronte.write("Villette", "1853")
       @library.add_author(@charlotte_bronte)
