@@ -3,6 +3,9 @@ require './spec_helper'
 RSpec.describe Library do
   before(:each) do
     @library = Library.new('Bemis Public Library')
+    @charlotte_bronte = Author.new({
+      first_name: "Charlotte", 
+      last_name: "Bronte"})
   end
   describe '#initialize' do
     it 'exists' do
@@ -19,6 +22,22 @@ RSpec.describe Library do
 
     it 'has an empty array of authors by default' do
       expect(@library.authors).to eq([])
+    end
+  end
+
+  describe '#add_author' do
+    it 'adds author to authors array' do
+      @library.add_author(@charlotte_bronte)
+
+      expect(@library.authors).to eq([@charlotte_bronte])
+    end
+
+    it 'adds authors books to books array' do
+      jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+      villette = @charlotte_bronte.write("Villette", "1853")
+      @library.add_author(@charlotte_bronte)
+
+      expect(@library.books).to eq([jane_eyre, villette])
     end
   end
 end
