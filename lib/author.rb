@@ -8,7 +8,10 @@ class Author
     @books = []
   end
 
-  def write
-
+  def write(book_name, publication_date)
+    Book.new({author_first_name: @first_name, 
+    author_last_name: @last_name, 
+    title: book_name, 
+    publication_date: publication_date})
   end
 end
