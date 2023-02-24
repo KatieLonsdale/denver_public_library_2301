@@ -20,10 +20,16 @@ class Library
   end
 
   def check_out_book(book)
+    book.check_outs += 1
     @checked_out_books << book
   end
 
   def return_book(book)
     @checked_out_books.delete(book)
+  end
+
+  def most_checked_out_book
+    ordered_by_check_outs = @books.sort_by{|book| book.check_outs}
+    ordered_by_check_outs.last.title
   end
 end
